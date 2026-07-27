@@ -1,4 +1,4 @@
-# arpan-pramanik 🚀
+# npx arpan-pramanik 🚀
 
 > Interactive CLI Portfolio of **Arpan Pramanik** — AI Engineer, Full Stack Developer & Researcher.
 
