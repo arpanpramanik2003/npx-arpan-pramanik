@@ -1,0 +1,53 @@
+{
+  "name": "arpan-pramanik",
+  "version": "1.0.5",
+  "description": "Interactive CLI Portfolio of Arpan Pramanik",
+  "main": "index.js",
+  "bin": {
+    "arpan-pramanik": "./index.js"
+  },
+  "preferGlobal": true,
+  "files": [
+    "index.js",
+    "src",
+    "assets",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "portfolio",
+    "cli",
+    "ai",
+    "machine-learning",
+    "developer",
+    "research",
+    "terminal-portfolio",
+    "arpan-pramanik"
+  ],
+  "author": "Arpan Pramanik <pramanikarpan089@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://arpanpramanik.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arpanpramanik2003/arpan-pramanik-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arpanpramanik2003/arpan-pramanik-cli/issues"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "boxen": "^5.1.2",
+    "chalk": "^4.1.2",
+    "cli-spinners": "^3.4.0",
+    "cli-table3": "^0.6.5",
+    "figlet": "^1.8.2",
+    "gradient-string": "^2.0.2",
+    "inquirer": "^8.2.6",
+    "nanospinner": "^1.2.2",
+    "open": "^8.4.2",
+    "ora": "^5.4.1"
+  }
+}
