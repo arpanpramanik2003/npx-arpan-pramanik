@@ -1,23 +1,23 @@
+const { executeCommand } = require("../core/commandRegistry");
+
 module.exports = {
-
-    help: require("./help"),
-    menu: require("./menu"),
-    whoami: require("./whoami"),
-    pwd: require("./pwd"),
-    ls: require("./ls"),
-    version: require("./version"),
-    about: require("./about"),
-    experience: require("./experience"),
-    projects: require("./projects"),
-    research: require("./research"),
-    skills: require("./skills"),
-    achievements: require("./achievements"),
-    education: require("./education"),
-    contact: require("./contact"),
-    social: require("./social"),
-    resume: require("./resume"),
-    github: require("./github"),
-    linkedin: require("./linkedin"),
-    portfolio: require("./portfolio")
-
+    get help() { return () => executeCommand("help"); },
+    get menu() { return () => executeCommand("menu"); },
+    get whoami() { return () => executeCommand("whoami"); },
+    get pwd() { return () => executeCommand("pwd"); },
+    get ls() { return () => executeCommand("ls"); },
+    get version() { return () => executeCommand("version"); },
+    get about() { return () => executeCommand("about"); },
+    get experience() { return () => executeCommand("experience"); },
+    get projects() { return () => executeCommand("projects"); },
+    get research() { return () => executeCommand("research"); },
+    get skills() { return () => executeCommand("skills"); },
+    get achievements() { return () => executeCommand("achievements"); },
+    get education() { return () => executeCommand("education"); },
+    get contact() { return () => executeCommand("contact"); },
+    get social() { return () => executeCommand("social"); },
+    get resume() { return () => executeCommand("resume"); },
+    get github() { return () => executeCommand("github"); },
+    get linkedin() { return () => executeCommand("linkedin"); },
+    get portfolio() { return () => executeCommand("portfolio"); }
 };

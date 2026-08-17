@@ -22,38 +22,27 @@ async function startApp() {
             const helpCmd = require("./commands/help");
             await helpCmd();
             console.log();
-            startTerminal(false);
-            return;
+            process.exit(0);
         }
-        const found = await execute(cmd);
-        if (!found) {
-            console.log(chalk.red(`'${args[0]}': command not found`));
-            console.log(chalk.gray("Run 'arpan-pramanik help' to view available commands.\n"));
-            startTerminal(false);
-            return;
+        try {
+            const found = await execute(cmd);
+            if (!found) {
+                console.log(chalk.red(`'${args[0]}': command not found`));
+                console.log(chalk.gray("Run 'arpan-pramanik help' to view available commands.\n"));
+                process.exit(1);
+            }
+        } catch (err) {
+            console.log(chalk.red(`An error occurred while executing '${args[0]}': ${err.message || err}`));
+            process.exit(1);
         }
         console.log();
-        startTerminal(false);
-        return;
+        process.exit(0);
     }
 
     console.clear();
 
     const spinner = ora("Initializing ArpanOS...").start();
-    await sleep(400);
-
-    spinner.text = "Loading Neural Engine...";
-    await sleep(400);
-
-    spinner.text = "Loading Research Modules...";
-    await sleep(400);
-
-    spinner.text = "Loading Developer Toolkit...";
-    await sleep(400);
-
-    spinner.text = "Connecting Portfolio...";
-    await sleep(300);
-
+    await sleep(200);
     spinner.succeed("System Ready");
 
     console.log();
@@ -82,13 +71,9 @@ async function startApp() {
 
     console.log();
 
-    await sleep(500);
-
     console.log(
         chalk.green("Launching ArpanOS Terminal...\n")
     );
-
-    await sleep(300);
 
     startTerminal();
 }

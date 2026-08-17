@@ -1,8 +1,11 @@
 const chalk = require("chalk");
 const boxen = require("boxen");
 const contact = require("../data/contact");
+const { getDivider } = require("../utils");
 
 module.exports = () => {
+    const div = getDivider(40);
+    const cols = process.stdout.columns || 80;
     const content = `
 
 📧 Email
@@ -21,7 +24,7 @@ ${contact.location}
 
 ${contact.portfolio}
 
-────────────────────────────────────────
+${div}
 
 ${chalk.green(contact.availability)}
 
@@ -33,8 +36,8 @@ ${chalk.green(contact.availability)}
             titleAlignment: "center",
             borderStyle: "round",
             borderColor: "green",
-            padding: 1,
-            margin: 1
+            padding: cols < 50 ? 0 : 1,
+            margin: cols < 50 ? 0 : 1
         })
     );
 };

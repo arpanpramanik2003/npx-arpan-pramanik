@@ -1,21 +1,24 @@
 {
   "name": "arpan-pramanik",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "Interactive CLI Portfolio of Arpan Pramanik",
   "main": "index.js",
   "bin": {
     "arpan-pramanik": "./index.js"
   },
   "preferGlobal": true,
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "files": [
     "index.js",
     "src",
-    "assets",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "node --test tests/*.test.js"
   },
   "keywords": [
     "portfolio",
@@ -41,12 +44,9 @@
   "dependencies": {
     "boxen": "^5.1.2",
     "chalk": "^4.1.2",
-    "cli-spinners": "^3.4.0",
-    "cli-table3": "^0.6.5",
     "figlet": "^1.8.2",
     "gradient-string": "^2.0.2",
     "inquirer": "^8.2.6",
-    "nanospinner": "^1.2.2",
     "open": "^8.4.2",
     "ora": "^5.4.1"
   }

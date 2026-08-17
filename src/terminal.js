@@ -1,11 +1,11 @@
 const execute = require("./core/commandManager");
-const handlers = require("./commands");
+const { getCommandNames } = require("./core/commandRegistry");
 const readline = require("readline");
 const chalk = require("chalk");
 const config = require("./config");
 const helpCmd = require("./commands/help");
 
-const COMMAND_LIST = Object.keys(handlers).concat(["clear", "exit"]);
+const COMMAND_LIST = getCommandNames().concat(["clear", "exit"]);
 
 function completer(line) {
     const hits = COMMAND_LIST.filter(c => c.startsWith(line.trim().toLowerCase()));
@@ -72,29 +72,44 @@ function startTerminal(showWelcome = true) {
 
         // Interactive help / menu navigation using Up/Down arrow keys
         if (command === "help" || command === "menu") {
-            rl.removeAllListeners("close");
-            rl.close();
-            await helpCmd(true, execute);
-            startTerminal(false);
-            return;
+            try {
+                rl.removeAllListeners("close");
+                rl.close();
+                await helpCmd(true, execute);
+                startTerminal(false);
+                return;
+            } catch (err) {
+                console.log();
+                console.log(chalk.red(`An error occurred in menu: ${err.message || err}`));
+                console.log();
+                startTerminal(false);
+                return;
+            }
         }
 
         // Execute registered commands
-        const found = await execute(command);
+        try {
+            const found = await execute(command);
 
-        // Unknown command
-        if (!found) {
-
+            // Unknown command
+            if (!found) {
+                console.log();
+                console.log(
+                    chalk.red(`${command}: command not found`)
+                );
+                console.log(
+                    chalk.gray("Type 'help' or 'menu' to view all available commands.")
+                );
+                console.log();
+            }
+        } catch (err) {
             console.log();
-
             console.log(
-                chalk.red(`${command}: command not found`)
+                chalk.red(`An error occurred while executing '${command}': ${err.message || err}`)
             );
-
             console.log(
-                chalk.gray("Type 'help' or 'menu' to view all available commands.")
+                chalk.gray("Please try again or type 'help' for available commands.")
             );
-
             console.log();
         }
 
