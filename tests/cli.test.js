@@ -7,8 +7,8 @@ const { getCommandNames, executeCommand } = require("../src/core/commandRegistry
 const { isHeadlessEnvironment, openUrl } = require("../src/utils");
 
 test("Package version alignment across package.json and config.js", () => {
-    assert.strictEqual(pkg.version, "2.0.0");
-    assert.strictEqual(config.version, "2.0.0");
+    assert.strictEqual(config.version, pkg.version);
+    assert.ok(pkg.version.length > 0);
 });
 
 test("Command Registry registers all core portfolio commands", () => {
