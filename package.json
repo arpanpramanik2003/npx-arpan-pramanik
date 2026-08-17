@@ -35,10 +35,10 @@
   "homepage": "https://arpanpramanik.dev",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arpanpramanik2003/arpan-pramanik-cli.git"
+    "url": "git+https://github.com/arpanpramanik2003/npx-arpan-pramanik.git"
   },
   "bugs": {
-    "url": "https://github.com/arpanpramanik2003/arpan-pramanik-cli/issues"
+    "url": "https://github.com/arpanpramanik2003/npx-arpan-pramanik/issues"
   },
   "type": "commonjs",
   "dependencies": {

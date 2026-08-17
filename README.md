@@ -102,8 +102,8 @@ To clone, modify, or test this CLI portfolio locally:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/arpanpramanik2003/arpan-pramanik-cli.git
-   cd arpan-pramanik-cli
+   git clone https://github.com/arpanpramanik2003/npx-arpan-pramanik.git
+   cd npx-arpan-pramanik
    ```
 
 2. **Install dependencies:**
