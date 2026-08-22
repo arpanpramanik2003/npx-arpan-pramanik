@@ -33,6 +33,9 @@ jobs:
       - name: Build Bundled CLI
         run: npm run build
 
+      - name: Validate Bundle Size Budget
+        run: npm run check:size
+
       - name: Run Test Suite
         run: npm test
 
