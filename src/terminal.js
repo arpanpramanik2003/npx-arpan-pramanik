@@ -3,7 +3,7 @@ const { getCommandNames } = require("./core/commandRegistry");
 const readline = require("readline");
 const chalk = require("chalk");
 const config = require("./config");
-const helpCmd = require("./commands/help");
+const { showInteractiveMenu } = require("./menu");
 
 const COMMAND_LIST = getCommandNames().concat(["clear", "exit"]);
 
@@ -106,7 +106,7 @@ function startTerminal(showWelcome = true) {
             }
 
             try {
-                await helpCmd(true, execute);
+                await showInteractiveMenu(execute);
             } catch (err) {
                 console.log();
                 console.log(chalk.red(`An error occurred in menu: ${err.message || err}`));

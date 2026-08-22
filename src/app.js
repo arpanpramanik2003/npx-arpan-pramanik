@@ -5,13 +5,14 @@ async function startApp() {
     if (args.length > 0) {
         const cmd = args[0].toLowerCase().replace(/^--?/, "");
         if (cmd === "v" || cmd === "version") {
-            const versionCmd = require("./commands/version");
-            versionCmd();
+            const versionScreen = require("./screens/version");
+            versionScreen();
             process.exit(0);
         }
         if (cmd === "help" || cmd === "h") {
-            const helpCmd = require("./commands/help");
-            await helpCmd();
+            const { getHelpCategories } = require("./core/commandRegistry");
+            const helpScreen = require("./screens/help");
+            helpScreen(getHelpCategories());
             console.log();
             process.exit(0);
         }
