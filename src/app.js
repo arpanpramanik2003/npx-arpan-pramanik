@@ -1,13 +1,4 @@
-const ora = require("ora");
 const chalk = require("chalk");
-const figlet = require("figlet");
-const gradient = require("gradient-string");
-const startTerminal = require("./terminal");
-const execute = require("./core/commandManager");
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 async function startApp() {
     const args = process.argv.slice(2);
@@ -25,6 +16,7 @@ async function startApp() {
             process.exit(0);
         }
         try {
+            const execute = require("./core/commandManager");
             const found = await execute(cmd);
             if (!found) {
                 console.log(chalk.red(`'${args[0]}': command not found`));
@@ -41,11 +33,9 @@ async function startApp() {
 
     console.clear();
 
-    const spinner = ora("Initializing ArpanOS...").start();
-    await sleep(200);
-    spinner.succeed("System Ready");
-
-    console.log();
+    const figlet = require("figlet");
+    const gradient = require("gradient-string");
+    const startTerminal = require("./terminal");
 
     console.log(
         gradient.atlas.multiline(
@@ -62,18 +52,9 @@ async function startApp() {
     );
 
     console.log();
-
-    console.log(
-        chalk.gray(
-            "Welcome to ArpanOS v2.0"
-        )
-    );
-
+    console.log(chalk.gray("Welcome to ArpanOS v2.0"));
     console.log();
-
-    console.log(
-        chalk.green("Launching ArpanOS Terminal...\n")
-    );
+    console.log(chalk.green("Launching ArpanOS Terminal...\n"));
 
     startTerminal();
 }

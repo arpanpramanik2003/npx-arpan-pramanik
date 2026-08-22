@@ -1,4 +1,3 @@
-const open = require("open");
 const chalk = require("chalk");
 
 /**
@@ -31,6 +30,7 @@ async function openUrl(url) {
 
     try {
         console.log(chalk.gray(`Opening ${url}...`));
+        const open = require("open");
         await open(url, { wait: false });
     } catch (err) {
         console.log(chalk.yellow(`Could not open browser automatically. Please visit: ${url}`));

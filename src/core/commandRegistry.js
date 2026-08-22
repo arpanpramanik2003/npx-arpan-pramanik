@@ -1,4 +1,3 @@
-const inquirer = require("inquirer");
 const chalk = require("chalk");
 
 const commandsList = [
@@ -168,27 +167,29 @@ function getHelpCategories() {
 
 function getMenuChoices() {
     const choices = [
-        new inquirer.Separator(chalk.bold.cyan("── 📂 Portfolio Modules ─────────────"))
+        { isSeparator: true, text: chalk.bold.cyan("── 📂 Portfolio Modules ─────────────") }
     ];
 
     commandsList.filter(c => c.category === "portfolio").forEach(c => {
         choices.push({
-            name: `${c.name.padEnd(14)} ${chalk.gray("• " + c.description)}`,
+            name: c.name,
+            displayName: `${c.name.padEnd(14)} ${chalk.gray("• " + c.description)}`,
             value: c.name
         });
     });
 
-    choices.push(new inquirer.Separator(chalk.bold.cyan("── 🌐 External Links ────────────────")));
+    choices.push({ isSeparator: true, text: chalk.bold.cyan("── 🌐 External Links ────────────────") });
     commandsList.filter(c => c.category === "links").forEach(c => {
         choices.push({
-            name: `${c.name.padEnd(14)} ${chalk.gray("• " + c.description)}`,
+            name: c.name,
+            displayName: `${c.name.padEnd(14)} ${chalk.gray("• " + c.description)}`,
             value: c.name
         });
     });
 
-    choices.push(new inquirer.Separator(chalk.bold.cyan("── ⚙ System Commands ────────────────")));
-    choices.push({ name: `clear          ${chalk.gray("• Clear Terminal")}`, value: "clear" });
-    choices.push({ name: `exit           ${chalk.gray("• Exit ArpanOS")}`, value: "exit" });
+    choices.push({ isSeparator: true, text: chalk.bold.cyan("── ⚙ System Commands ────────────────") });
+    choices.push({ name: "clear", displayName: `clear          ${chalk.gray("• Clear Terminal")}`, value: "clear" });
+    choices.push({ name: "exit", displayName: `exit           ${chalk.gray("• Exit ArpanOS")}`, value: "exit" });
 
     return choices;
 }
