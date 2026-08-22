@@ -45,3 +45,4 @@ ${profile.interests.map(item => `• ${item}`).join("\n")}
     );
     console.log();
 };
+
