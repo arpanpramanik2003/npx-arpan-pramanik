@@ -12,7 +12,29 @@ function completer(line) {
     return [hits.length ? hits : COMMAND_LIST, line];
 }
 
+/**
+ * Restores terminal state to standard mode and ensures cursor is visible.
+ */
+function restoreTerminalState() {
+    if (process.stdin.isTTY && typeof process.stdin.setRawMode === "function") {
+        process.stdin.setRawMode(false);
+    }
+    if (process.stdout.isTTY) {
+        process.stdout.write("\u001B[?25h");
+    }
+}
+
 function startTerminal(showWelcome = true) {
+    // Setup SIGINT handler to gracefully restore terminal
+    const sigintHandler = () => {
+        restoreTerminalState();
+        console.log();
+        console.log(chalk.yellow("Goodbye! Thanks for visiting my portfolio 👋"));
+        console.log();
+        process.exit(0);
+    };
+
+    process.once("SIGINT", sigintHandler);
 
     const rl = readline.createInterface({
         input: process.stdin,
@@ -37,9 +59,12 @@ function startTerminal(showWelcome = true) {
         );
     }
 
+    let isMenuMode = false;
+
     rl.prompt();
 
     rl.on("line", async (line) => {
+        if (isMenuMode) return;
 
         const command = line.trim().toLowerCase();
 
@@ -58,13 +83,13 @@ function startTerminal(showWelcome = true) {
 
         // Built-in: exit
         if (command === "exit") {
-
             console.log();
             console.log(
                 chalk.yellow("Goodbye! Thanks for visiting my portfolio 👋")
             );
             console.log();
 
+            restoreTerminalState();
             rl.close();
             process.exit(0);
             return;
@@ -72,19 +97,30 @@ function startTerminal(showWelcome = true) {
 
         // Interactive help / menu navigation using Up/Down arrow keys
         if (command === "help" || command === "menu") {
+            isMenuMode = true;
+            rl.pause();
+
+            // Explicitly verify and reset stdin raw mode before handing control to Inquirer
+            if (process.stdin.isTTY && typeof process.stdin.setRawMode === "function") {
+                process.stdin.setRawMode(false);
+            }
+
             try {
-                rl.removeAllListeners("close");
-                rl.close();
                 await helpCmd(true, execute);
-                startTerminal(false);
-                return;
             } catch (err) {
                 console.log();
                 console.log(chalk.red(`An error occurred in menu: ${err.message || err}`));
                 console.log();
-                startTerminal(false);
-                return;
+            } finally {
+                // Explicitly re-synchronize raw mode for readline in TTY environments
+                if (process.stdin.isTTY && typeof process.stdin.setRawMode === "function") {
+                    process.stdin.setRawMode(true);
+                }
+                isMenuMode = false;
+                rl.resume();
+                rl.prompt();
             }
+            return;
         }
 
         // Execute registered commands
@@ -114,13 +150,12 @@ function startTerminal(showWelcome = true) {
         }
 
         rl.prompt();
-
     });
 
     rl.on("close", () => {
+        restoreTerminalState();
         process.exit(0);
     });
-
 }
 
 module.exports = startTerminal;
