@@ -22,7 +22,7 @@
     "check:size": "node scripts/check-size.js",
     "prepublishOnly": "npm run build",
     "start": "node dist/index.js",
-    "test": "npm run build && npm run check:size && node --test tests/*.test.js"
+    "test": "npm run build && npm run check:size && node --test"
   },
   "keywords": [
     "portfolio",
