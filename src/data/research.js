@@ -99,6 +99,40 @@ module.exports = [
 
         ]
 
+    },
+
+    {
+
+        id: 4,
+
+        title: "Hyperspectral Fruit and Vegetable Classification Using Convolutional Neural Networks with EfficientNetB3",
+
+        publisher: "Springer (LNNS, volume 1915) • ICDMIS 2025",
+
+        year: "2026",
+
+        type: "Conference Paper",
+
+        authors:
+            "Shibdas Dutta, Subhrendu Guha Neogi, Arpan Pramanik, Diya Chanda, Özgün Girgin, Enes Ladin Öncül",
+
+        description:
+            "High-performance deep learning framework utilizing EfficientNetB3 optimized via transfer learning on a hyperspectral image dataset across 36 distinct classes, achieving 99.29% training accuracy and 97.21% testing accuracy with robust generalization.",
+
+        contributions: [
+
+            "Transfer learning with EfficientNetB3",
+
+            "99.29% train & 97.21% test accuracy across 36 classes",
+
+            "Benchmark comparison against 20+ deep learning models",
+
+            "Hyperspectral domain adaptation analysis",
+
+            "Real-time Streamlit & OpenCV deployment for automated sorting"
+
+        ]
+
     }
 
 ];

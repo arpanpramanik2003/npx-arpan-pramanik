@@ -5,10 +5,10 @@ module.exports = [
 
         title: "Research Publications",
 
-        value: "3+",
+        value: "4",
 
         description:
-            "Published research papers in IEEE conferences and journals focusing on Explainable AI, Computer Vision, Deep Learning, and Precision Agriculture."
+            "Published 4 peer-reviewed research papers (3 IEEE, 1 Springer) focusing on Explainable AI, Computer Vision, Deep Learning, and Precision Agriculture."
 
     },
 
