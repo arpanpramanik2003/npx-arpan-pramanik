@@ -80,7 +80,7 @@ arpan-pramanik
 | :--- | :--- |
 | `github` | Opens GitHub profile in default browser (with headless text fallback) |
 | `linkedin` | Opens LinkedIn profile in default browser (with headless text fallback) |
-| `portfolio` | Opens web portfolio (`arpanpramanik.dev`) in browser (with headless text fallback) |
+| `portfolio` | Opens web portfolio (`arpanpramanik.tech`) in browser (with headless text fallback) |
 | `social` | Displays and links all social media handles |
 | `resume` | Opens latest resume PDF in default browser (with headless text fallback) |
 
@@ -166,7 +166,7 @@ arpan-pramanik/
 ## 👤 Author
 
 **Arpan Pramanik**
-- 🌐 Website: [arpanpramanik.dev](https://arpanpramanik.dev)
+- 🌐 Website: [arpanpramanik.tech](https://arpanpramanik.tech)
 - 🐙 GitHub: [@arpanpramanik2003](https://github.com/arpanpramanik2003)
 - 💼 LinkedIn: [in/arpanpramanik2003](https://linkedin.com/in/arpanpramanik2003)
 - 📧 Email: [pramanikarpan089@gmail.com](mailto:pramanikarpan089@gmail.com)
