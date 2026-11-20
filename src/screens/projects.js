@@ -5,36 +5,33 @@ const { getDivider } = require("../utils");
 
 module.exports = () => {
     console.log();
-    const div = getDivider(40);
+    const div = getDivider(44);
     const cols = process.stdout.columns || 80;
     projects.forEach((project, index) => {
-        const content = `
+        const linkParts = [];
+        if (project.demo) linkParts.push(`🚀  ${chalk.cyan(project.demo)}`);
+        if (project.github) linkParts.push(`💻  ${chalk.gray(project.github)}`);
+        const linksDisplay = linkParts.length > 0 ? `\n${linkParts.join("\n")}\n` : "";
 
+        const content = `
 ${chalk.bold.cyan(project.title)}
 
 📂  ${project.category}
-
-📅  ${project.year}
-
-🚀  ${project.status}
-
+📅  ${project.year} • 🚀  ${chalk.green(project.status)}${linksDisplay}
 ${div}
 
 ${project.description}
 
-${chalk.bold.white("Highlights")}
-
+${chalk.bold.white("Key Highlights & Engineering Rigor")}
 ${project.highlights.map(item => `✔ ${item}`).join("\n")}
 
 ${chalk.bold.white("Technology Stack")}
-
-${project.tech.join(" • ")}
-
+${project.tech.map(t => chalk.magenta(t)).join(" • ")}
 `;
 
         console.log(
             boxen(content.trim(), {
-                title: ` PROJECT ${index + 1} `,
+                title: ` PROJECT ${index + 1}: ${project.title.toUpperCase()} `,
                 titleAlignment: "center",
                 borderStyle: "round",
                 borderColor: "yellow",
