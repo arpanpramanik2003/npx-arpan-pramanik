@@ -6,7 +6,7 @@ module.exports = {
 
     location: "West Bengal, India",
 
-    portfolio: "https://arpanpramanik.dev",
+    portfolio: "https://arpanpramanik.tech",
 
     availability:
         "Open to AI Engineering, Full Stack Development, Research and Internship opportunities."

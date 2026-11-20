@@ -9,25 +9,26 @@ module.exports = () => {
     const content = `
 ${chalk.bold.cyan(profile.name)}
 
-🤖  ${profile.role}
-💻  ${profile.subtitle}
+🤖  ${chalk.bold(profile.role)}
+💻  ${chalk.italic.gray(profile.subtitle)}
 
 ${div}
 
-🎓  ${profile.education.degree}
+🎓  ${profile.education.degree} (${chalk.yellow(`CGPA: ${profile.education.cgpa}`)})
     ${profile.education.university}
 
 📍  ${profile.location}
-
-🌐  ${profile.website}
-
+🌐  ${chalk.cyan(profile.website)}
 📧  ${profile.email}
+📞  ${profile.phone}
+🔗  ${chalk.gray(`GitHub: ${profile.github}`)}
+🔗  ${chalk.gray(`LinkedIn: ${profile.linkedin}`)}
 
 ${div}
 
 ${profile.bio}
 
-${chalk.bold.white("Core Interests")}
+${chalk.bold.white("Core Interests & Focus Areas")}
 
 ${profile.interests.map(item => `• ${item}`).join("\n")}
 `;

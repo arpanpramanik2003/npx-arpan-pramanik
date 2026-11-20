@@ -14,8 +14,8 @@ module.exports = [
 
     {
         platform: "Portfolio",
-        username: "arpanpramanik.dev",
-        url: "https://arpanpramanik.dev"
+        username: "arpanpramanik.tech",
+        url: "https://arpanpramanik.tech"
     },
 
     {
